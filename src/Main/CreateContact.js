@@ -1,14 +1,25 @@
 import React from "react";
-import { Form, Input, Button, Space } from "antd";
+import { Form, Input, Button, Space, DatePicker, Select, Switch, message 
+} from "antd";
 import Context from "./Context";
+
+const { Option } = Select;
+
+const info = () => {
+  message.info('Contact was successfully added');
+};
 
 const CreateContact = ({ onCancelClick }) => {
   const [form] = Form.useForm();
   const { addNewContact } = React.useContext(Context);
 
   const onFormFinish = (values) => {
+    console.log(values)
+    console.log(values.relative)
+    console.log(values.birthday)
     addNewContact(values);
     onCancelClick();
+    info();
   };
 
   return (
@@ -36,6 +47,43 @@ const CreateContact = ({ onCancelClick }) => {
         ]}
       >
         <Input />
+      </Form.Item>
+      <Form.Item
+        name="birthday"
+        label="Birthday"
+        rules={[
+          {
+            required: true,
+            message: "Please input birthday",
+          },
+        ]}
+      >
+      <DatePicker />
+      </Form.Item>
+      <Form.Item
+        name="gender"
+        label="Gender"
+        rules={[
+          {
+            required: true,
+            message: "Please input gender",
+          },
+        ]}
+      >
+      <Select
+        placeholder="Select a option and change input text above"
+        allowClear
+      >
+        <Option value="male">male</Option>
+        <Option value="female">female</Option>
+        <Option value="other">other</Option>
+      </Select>
+      </Form.Item>
+      <Form.Item
+        name="relative"
+        label="Is relative?"
+      >
+      <Switch  />
       </Form.Item>
       <Form.Item>
         <Space>

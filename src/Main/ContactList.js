@@ -16,6 +16,30 @@ const ContactList = ({ onAddNewClick }) => {
       dataIndex: "phone",
       key: "phone",
     },
+    {
+      title: "Birthday",
+      dataIndex: "birthday",
+      key: "birthday",
+      render: (birthday) => ( 
+        <> { birthday.format('D MMMM YYYY') } </>
+      )
+    },
+    {
+      title: "Gender",
+      dataIndex: "gender",
+      key: "gender",
+    },
+    {
+      title: "Is a relative?",
+      dataIndex: "relative",
+      key: "relative",
+      render: (relative) => ( 
+        <> 
+        { relative && <> Yes </> } 
+        {!relative && <> No </>}
+        </>
+      )
+    },
   ];
 
   return (
