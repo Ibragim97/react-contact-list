@@ -3,18 +3,11 @@ import "./App.css";
 import "antd/dist/antd.css";
 import MainPage from "./Main/MainPage";
 import Context from "./Main/Context";
+import useContacts from "./Main/UseContacts";
 
 function App() {
-  const [contacts, setContacts] = React.useState([]);
-
-  const addNewContact = (contact) => {
-    setContacts(contacts.concat(contact));
-  };
-
-  const contextValue = { contacts, addNewContact };
-
   return (
-    <Context.Provider value={contextValue}>
+    <Context.Provider value={useContacts()}>
       <MainPage />
     </Context.Provider>
   );

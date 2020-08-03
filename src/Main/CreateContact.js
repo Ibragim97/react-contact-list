@@ -14,9 +14,6 @@ const CreateContact = ({ onCancelClick }) => {
   const { addNewContact } = React.useContext(Context);
 
   const onFormFinish = (values) => {
-    console.log(values)
-    console.log(values.relative)
-    console.log(values.birthday)
     addNewContact(values);
     onCancelClick();
     info();
